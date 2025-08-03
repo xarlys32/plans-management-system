@@ -17,6 +17,7 @@ public class ProcessPlanEventCommandHandler {
     public void processAndPublishPlan(ProcessPlanEventCommand processPlanEventCommand) {
         // Llamar y validar al dominio
         //Publicar evento validado
+        System.out.println("aaa"+ processPlanEventCommand);
         Plan plan = planProviderMapper.processPlanEventCommandToPlan(processPlanEventCommand);
     }
 }

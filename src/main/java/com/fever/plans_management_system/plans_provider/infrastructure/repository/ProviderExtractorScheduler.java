@@ -1,5 +1,6 @@
 package com.fever.plans_management_system.plans_provider.infrastructure.repository;
 
+import com.fever.plans_management_system.plans_provider.application.command.ProcessPlanEventCommand;
 import com.fever.plans_management_system.plans_provider.application.handler.ProcessPlanEventCommandHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -35,7 +36,8 @@ public class ProviderExtractorScheduler {
                 .doOnError(error -> log.error("Error fetching events", error))
                 .subscribe(xml -> {
                     log.info("Fetched XML, forwarding to domain service.");
-                    processPlanEventCommandHandler.processPlansFromXml(xml);
+                    processPlanEventCommandHandler.processAndPublishPlan(new ProcessPlanEventCommand());
                 });
     }
+
 }
