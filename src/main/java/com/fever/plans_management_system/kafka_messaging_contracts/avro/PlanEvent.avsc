@@ -3,10 +3,35 @@
   "type": "record",
   "name": "PlanEvent",
   "fields": [
-    { "name": "id", "type": "string" },
-    { "name": "name", "type": "string" },
-    { "name": "sellMode", "type": "string" },
-    { "name": "availableFrom", "type": "string" },
-    { "name": "availableTo", "type": "string" }
+    { "name": "planId", "type": "long" },
+    { "name": "basePlan", "type": {
+      "type": "record",
+      "name": "BasePlan",
+      "fields": [
+        { "name": "basePlanId", "type": "long" },
+        { "name": "title", "type": "string" },
+        { "name": "sellMode", "type": "string" },
+        { "name": "organizerCompanyId", "type": [ "null", "long" ], "default": null }
+      ]
+    }},
+    { "name": "startDate", "type": { "type": "long", "logicalType": "timestamp-millis" } },
+    { "name": "endDate", "type": { "type": "long", "logicalType": "timestamp-millis" } },
+    { "name": "sellFrom", "type": { "type": "long", "logicalType": "timestamp-millis" } },
+    { "name": "sellTo", "type": { "type": "long", "logicalType": "timestamp-millis" } },
+    { "name": "soldOut", "type": "boolean" },
+    { "name": "zones", "type": {
+      "type": "array",
+      "items": {
+        "type": "record",
+        "name": "Zone",
+        "fields": [
+          { "name": "zoneId", "type": "long" },
+          { "name": "name", "type": "string" },
+          { "name": "capacity", "type": "int" },
+          { "name": "price", "type": "double" },
+          { "name": "numbered", "type": "boolean" }
+        ]
+      }
+    }}
   ]
 }
