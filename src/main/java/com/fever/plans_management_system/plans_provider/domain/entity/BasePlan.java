@@ -1,18 +1,27 @@
 package com.fever.plans_management_system.plans_provider.domain.entity;
 
+import com.fever.plans_management_system.plans_provider.domain.event.CreateBasePlanEvent;
 import com.fever.plans_management_system.plans_provider.domain.valueobject.BasePlanId;
+
+import java.util.List;
 
 public class BasePlan {
     private BasePlanId id;
     private String title;
     private String sellMode;
     private Long organizerCompanyId;
+    private List<Plan> planList;
 
     private BasePlan(Builder builder) {
         id = builder.id;
         title = builder.title;
         sellMode = builder.sellMode;
         organizerCompanyId = builder.organizerCompanyId;
+        planList = builder.planList;
+    }
+
+    public CreateBasePlanEvent validateAndCreateEvent() {
+        return new CreateBasePlanEvent("CREATE_BASE_PLAN", this);
     }
 
     public static Builder builder() {
@@ -40,10 +49,10 @@ public class BasePlan {
         private String title;
         private String sellMode;
         private Long organizerCompanyId;
+        private List<Plan> planList;
 
         private Builder() {
         }
-
 
         public Builder id(BasePlanId val) {
             id = val;
@@ -62,6 +71,11 @@ public class BasePlan {
 
         public Builder organizerCompanyId(Long val) {
             organizerCompanyId = val;
+            return this;
+        }
+
+        public Builder planList(List<Plan> val) {
+            planList = val;
             return this;
         }
 

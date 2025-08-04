@@ -5,6 +5,8 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 @Data
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ZoneXml {
@@ -16,7 +18,7 @@ public class ZoneXml {
     private Integer capacity;
 
     @XmlAttribute(name = "price")
-    private Double price;
+    private BigDecimal price;
 
     @XmlAttribute(name = "name")
     private String name;

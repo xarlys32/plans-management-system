@@ -15,7 +15,7 @@ public class PlanXml {
     private Long planId;
 
     @XmlAttribute(name = "plan_start_date")
-    private String startDate; // puedes mapear luego a LocalDateTime
+    private String startDate;
 
     @XmlAttribute(name = "plan_end_date")
     private String endDate;

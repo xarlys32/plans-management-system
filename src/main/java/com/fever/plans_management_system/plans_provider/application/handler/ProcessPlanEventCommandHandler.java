@@ -2,7 +2,9 @@ package com.fever.plans_management_system.plans_provider.application.handler;
 
 import com.fever.plans_management_system.plans_provider.application.command.ProcessPlanEventCommand;
 import com.fever.plans_management_system.plans_provider.application.mapper.PlanProviderMapper;
+import com.fever.plans_management_system.plans_provider.domain.entity.BasePlan;
 import com.fever.plans_management_system.plans_provider.domain.entity.Plan;
+import com.fever.plans_management_system.plans_provider.domain.event.CreateBasePlanEvent;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,7 +19,8 @@ public class ProcessPlanEventCommandHandler {
     public void processAndPublishPlan(ProcessPlanEventCommand processPlanEventCommand) {
         // Llamar y validar al dominio
         //Publicar evento validado
-        System.out.println("aaa"+ processPlanEventCommand);
-        Plan plan = planProviderMapper.processPlanEventCommandToPlan(processPlanEventCommand);
+        BasePlan basePlan = planProviderMapper.processBasePlanEventCommandToPlan(processPlanEventCommand);
+        CreateBasePlanEvent event = basePlan.validateAndCreateEvent();
+
     }
 }

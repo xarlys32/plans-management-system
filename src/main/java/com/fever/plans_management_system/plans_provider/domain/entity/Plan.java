@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Plan {
     private PlanId id;
-    private BasePlan basePlan;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
     private LocalDateTime sellFrom;
@@ -17,7 +16,6 @@ public class Plan {
 
     private Plan(Builder builder) {
         id = builder.id;
-        basePlan = builder.basePlan;
         startDate = builder.startDate;
         endDate = builder.endDate;
         sellFrom = builder.sellFrom;
@@ -32,7 +30,6 @@ public class Plan {
 
     public static final class Builder {
         private PlanId id;
-        private BasePlan basePlan;
         private LocalDateTime startDate;
         private LocalDateTime endDate;
         private LocalDateTime sellFrom;
@@ -49,11 +46,6 @@ public class Plan {
 
         public Builder id(PlanId val) {
             id = val;
-            return this;
-        }
-
-        public Builder basePlan(BasePlan val) {
-            basePlan = val;
             return this;
         }
 
@@ -94,10 +86,6 @@ public class Plan {
 
     public PlanId getId() {
         return id;
-    }
-
-    public BasePlan getBasePlan() {
-        return basePlan;
     }
 
     public LocalDateTime getStartDate() {
