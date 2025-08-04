@@ -1,12 +1,13 @@
 package com.fever.plans_management_system.plans_management.infrastructure.repository.postgres.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
+@Builder
 @Entity
 @Table(name = "base_plans")
 public class BasePlanEntity {

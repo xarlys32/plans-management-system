@@ -19,6 +19,7 @@ public class ManagementRepositoryImpl implements ManagementRepository {
 
     @Override
     public BasePlan save(BasePlan basePlan) {
-        return null;
+        return managementRepoMapper.basePlanEntityToDomain(
+                managementPostgresRepository.save(managementRepoMapper.basePlanToEntity(basePlan)));
     }
 }
