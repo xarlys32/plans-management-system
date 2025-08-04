@@ -3,17 +3,19 @@
   "type": "record",
   "name": "PlanEvent",
   "fields": [
+  { "name": "basePlan",
+       "fields": [
+         { "name": "basePlanId", "type": "long" },
+         { "name": "title", "type": "string" },
+         { "name": "sellMode", "type": "string" },
+         { "name": "organizerCompanyId", "type": [ "null", "long" ], "default": null },
+
+       ]
+     }
     { "name": "planId", "type": "long" },
     { "name": "basePlan", "type": {
       "type": "record",
-      "name": "BasePlan",
-      "fields": [
-        { "name": "basePlanId", "type": "long" },
-        { "name": "title", "type": "string" },
-        { "name": "sellMode", "type": "string" },
-        { "name": "organizerCompanyId", "type": [ "null", "long" ], "default": null }
-      ]
-    }},
+     },
     { "name": "startDate", "type": { "type": "long", "logicalType": "timestamp-millis" } },
     { "name": "endDate", "type": { "type": "long", "logicalType": "timestamp-millis" } },
     { "name": "sellFrom", "type": { "type": "long", "logicalType": "timestamp-millis" } },
