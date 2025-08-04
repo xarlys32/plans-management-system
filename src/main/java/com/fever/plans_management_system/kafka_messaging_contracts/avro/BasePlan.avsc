@@ -1,0 +1,45 @@
+{
+  "namespace": "com.fever.plans_management_system.kafka_messaging_contracts.dto",
+  "type": "record",
+  "name": "BasePlan",
+  "fields": [
+    { "name": "base_plan_id", "type": "long" },
+    { "name": "sell_mode", "type": "string" },
+    { "name": "title", "type": "string" },
+    {
+      "name": "plans",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "record",
+          "name": "Plan",
+          "fields": [
+            { "name": "plan_id", "type": "long" },
+            { "name": "plan_start_date", "type": "string" },
+            { "name": "plan_end_date", "type": "string" },
+            { "name": "sell_from", "type": "string" },
+            { "name": "sell_to", "type": "string" },
+            { "name": "sold_out", "type": "boolean" },
+            {
+              "name": "zones",
+              "type": {
+                "type": "array",
+                "items": {
+                  "type": "record",
+                  "name": "Zone",
+                  "fields": [
+                    { "name": "zone_id", "type": "long" },
+                    { "name": "capacity", "type": "int" },
+                    { "name": "price", "type": "string" },
+                    { "name": "name", "type": "string" },
+                    { "name": "numbered", "type": "boolean" }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,18 +1,18 @@
 package com.fever.plans_management_system.plans_provider.infrastructure.messaging.publisher.kafka;
 
-import com.fever.plans_management_system.plans_provider.domain.event.CreateBasePlanEvent;
+import com.fever.plans_management_system.kafka_messaging_contracts.dto.BasePlan;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
 public class KafkaProducer {
-    private final KafkaTemplate<String, CreateBasePlanEvent> kafkaTemplate;
+    private final KafkaTemplate<String, BasePlan> kafkaTemplate;
 
-    public KafkaProducer(KafkaTemplate<String, CreateBasePlanEvent> kafkaTemplate) {
+    public KafkaProducer(KafkaTemplate<String, BasePlan> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public void send(String topic, CreateBasePlanEvent message) {
+    public void send(String topic, BasePlan message) {
         kafkaTemplate.send(topic, message);
     }
 }

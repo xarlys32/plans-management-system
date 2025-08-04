@@ -3,8 +3,6 @@ package com.fever.plans_management_system.plans_provider.infrastructure.reposito
 import com.fever.plans_management_system.plans_provider.application.record.BasePlanRecord;
 import com.fever.plans_management_system.plans_provider.application.record.PlanRecord;
 import com.fever.plans_management_system.plans_provider.application.record.ZoneRecord;
-import com.fever.plans_management_system.plans_provider.domain.entity.BasePlan;
-import com.fever.plans_management_system.plans_provider.domain.valueobject.BasePlanId;
 import com.fever.plans_management_system.plans_provider.infrastructure.repository.xml.entity.BasePlanXml;
 import com.fever.plans_management_system.plans_provider.infrastructure.repository.xml.entity.PlanXml;
 import org.springframework.stereotype.Component;

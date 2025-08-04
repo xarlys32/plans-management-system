@@ -1,6 +1,6 @@
 package com.fever.plans_management_system.plans_management.infrastructure.messaging.listener.kafka.config;
 
-import com.fever.plans_management_system.plans_management.infrastructure.messaging.listener.kafka.dto.PlanEventConsumeDTO;
+import com.fever.plans_management_system.plans_management.infrastructure.messaging.listener.kafka.dto.BasePlanEventMessage;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.context.annotation.Bean;
@@ -17,7 +17,7 @@ import java.util.Map;
 public class KafkaConsumerConfig {
 
     @Bean
-    public ConsumerFactory<String, PlanEventConsumeDTO> consumerFactory() {
+    public ConsumerFactory<String, BasePlanEventMessage> consumerFactory() {
         Map<String, Object> config = new HashMap<>();
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         config.put(ConsumerConfig.GROUP_ID_CONFIG, "plan-event");
@@ -25,12 +25,12 @@ public class KafkaConsumerConfig {
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
         config.put(JsonDeserializer.TRUSTED_PACKAGES, "*");
         return new DefaultKafkaConsumerFactory<>(config, new StringDeserializer(),
-                new JsonDeserializer<>(PlanEventConsumeDTO.class));
+                new JsonDeserializer<>(BasePlanEventMessage.class));
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, PlanEventConsumeDTO> kafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, PlanEventConsumeDTO> factory =
+    public ConcurrentKafkaListenerContainerFactory<String, BasePlanEventMessage> kafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, BasePlanEventMessage> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
         return factory;

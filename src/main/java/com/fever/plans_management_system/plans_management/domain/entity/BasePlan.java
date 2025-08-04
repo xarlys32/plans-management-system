@@ -1,4 +1,4 @@
-package com.fever.plans_management_system.plans_provider.domain.entity;
+package com.fever.plans_management_system.plans_management.domain.entity;
 
 import com.fever.plans_management_system.plans_provider.domain.event.CreateBasePlanEvent;
 import com.fever.plans_management_system.plans_provider.domain.valueobject.BasePlanId;
