@@ -1,11 +1,11 @@
 package com.fever.plans_management_system.plans_management.domain.entity;
 
-import com.fever.plans_management_system.plans_provider.domain.valueobject.ZoneId;
+import com.fever.plans_management_system.plans_provider.domain.valueobject.ZoneProviderId;
 
 import java.math.BigDecimal;
 
 public class Zone {
-    private ZoneId id;
+    private ZoneProviderId id;
     private String name;
     private int capacity;
     private BigDecimal price;
@@ -24,7 +24,7 @@ public class Zone {
     }
 
     public static final class Builder {
-        private ZoneId id;
+        private ZoneProviderId id;
         private String name;
         private int capacity;
         private BigDecimal price;
@@ -33,7 +33,7 @@ public class Zone {
         private Builder() {
         }
 
-        public Builder id(ZoneId val) {
+        public Builder id(ZoneProviderId val) {
             id = val;
             return this;
         }
@@ -63,7 +63,7 @@ public class Zone {
         }
     }
 
-    public ZoneId getId() {
+    public ZoneProviderId getId() {
         return id;
     }
 

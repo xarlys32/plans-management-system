@@ -1,27 +1,27 @@
 package com.fever.plans_management_system.plans_provider.domain.entity;
 
-import com.fever.plans_management_system.plans_provider.domain.valueobject.PlanId;
+import com.fever.plans_management_system.plans_provider.domain.valueobject.PlanProviderId;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class Plan {
-    private PlanId id;
+public class PlanProvider {
+    private PlanProviderId id;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
     private LocalDateTime sellFrom;
     private LocalDateTime sellTo;
     private boolean soldOut;
-    private List<Zone> zones;
+    private List<ZoneProvider> zoneProviders;
 
-    private Plan(Builder builder) {
+    private PlanProvider(Builder builder) {
         id = builder.id;
         startDate = builder.startDate;
         endDate = builder.endDate;
         sellFrom = builder.sellFrom;
         sellTo = builder.sellTo;
         soldOut = builder.soldOut;
-        zones = builder.zones;
+        zoneProviders = builder.zoneProviders;
     }
 
     public static Builder builder() {
@@ -29,13 +29,13 @@ public class Plan {
     }
 
     public static final class Builder {
-        private PlanId id;
+        private PlanProviderId id;
         private LocalDateTime startDate;
         private LocalDateTime endDate;
         private LocalDateTime sellFrom;
         private LocalDateTime sellTo;
         private boolean soldOut;
-        private List<Zone> zones;
+        private List<ZoneProvider> zoneProviders;
 
         private Builder() {
         }
@@ -44,7 +44,7 @@ public class Plan {
             return new Builder();
         }
 
-        public Builder id(PlanId val) {
+        public Builder id(PlanProviderId val) {
             id = val;
             return this;
         }
@@ -74,17 +74,17 @@ public class Plan {
             return this;
         }
 
-        public Builder zones(List<Zone> val) {
-            zones = val;
+        public Builder zones(List<ZoneProvider> val) {
+            zoneProviders = val;
             return this;
         }
 
-        public Plan build() {
-            return new Plan(this);
+        public PlanProvider build() {
+            return new PlanProvider(this);
         }
     }
 
-    public PlanId getId() {
+    public PlanProviderId getId() {
         return id;
     }
 
@@ -108,7 +108,7 @@ public class Plan {
         return soldOut;
     }
 
-    public List<Zone> getZones() {
-        return zones;
+    public List<ZoneProvider> getZones() {
+        return zoneProviders;
     }
 }

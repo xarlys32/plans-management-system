@@ -1,4 +1,4 @@
 package com.fever.plans_management_system.plans_provider.domain.valueobject;
 
-public record ZoneId(Long value) {
+public record PlanProviderId(Long value) {
 }

@@ -1,7 +1,7 @@
 {
   "namespace": "com.fever.plans_management_system.kafka_messaging_contracts.dto",
   "type": "record",
-  "name": "BasePlan",
+  "name": "BasePlanAvro",
   "fields": [
     { "name": "base_plan_id", "type": "long" },
     { "name": "sell_mode", "type": "string" },
@@ -12,7 +12,7 @@
         "type": "array",
         "items": {
           "type": "record",
-          "name": "Plan",
+          "name": "PlanAvro",
           "fields": [
             { "name": "plan_id", "type": "long" },
             { "name": "plan_start_date", "type": "string" },
@@ -26,7 +26,7 @@
                 "type": "array",
                 "items": {
                   "type": "record",
-                  "name": "Zone",
+                  "name": "ZoneAvro",
                   "fields": [
                     { "name": "zone_id", "type": "long" },
                     { "name": "capacity", "type": "int" },

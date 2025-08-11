@@ -11,6 +11,7 @@ public class BasePlanPublisherImpl implements BasePlanEventPublisher {
 
     private final KafkaProducer kafkaProducer;
     private final KafkaProducerMapper kafkaProducerMapper;
+    private final static String TOPIC = "base-plan-topic";
 
     public BasePlanPublisherImpl(KafkaProducer kafkaProducer, KafkaProducerMapper kafkaProducerMapper) {
         this.kafkaProducer = kafkaProducer;
@@ -19,6 +20,6 @@ public class BasePlanPublisherImpl implements BasePlanEventPublisher {
 
     @Override
     public void publish(CreateBasePlanEvent event) {
-        kafkaProducer.send("base-plan-topic", kafkaProducerMapper.createBasePlanEventTobasePlanAvro(event));
+        kafkaProducer.send(TOPIC, kafkaProducerMapper.createBasePlanEventTobasePlanAvro(event));
     }
 }

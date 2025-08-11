@@ -1,27 +1,27 @@
 package com.fever.plans_management_system.plans_provider.domain.entity;
 
 import com.fever.plans_management_system.plans_provider.domain.event.CreateBasePlanEvent;
-import com.fever.plans_management_system.plans_provider.domain.valueobject.BasePlanId;
+import com.fever.plans_management_system.plans_provider.domain.valueobject.BasePlanProviderId;
 
 import java.util.List;
 
-public class BasePlan {
-    private BasePlanId id;
+public class BasePlanProvider {
+    private BasePlanProviderId id;
     private String title;
     private String sellMode;
     private Long organizerCompanyId;
-    private List<Plan> planList;
+    private List<PlanProvider> planProviderList;
 
-    public List<Plan> getPlanList() {
-        return planList;
+    public List<PlanProvider> getPlanList() {
+        return planProviderList;
     }
 
-    private BasePlan(Builder builder) {
+    private BasePlanProvider(Builder builder) {
         id = builder.id;
         title = builder.title;
         sellMode = builder.sellMode;
         organizerCompanyId = builder.organizerCompanyId;
-        planList = builder.planList;
+        planProviderList = builder.planProviderList;
     }
 
     public CreateBasePlanEvent validateAndCreateEvent() {
@@ -33,7 +33,7 @@ public class BasePlan {
         return new Builder();
     }
 
-    public BasePlanId getId() {
+    public BasePlanProviderId getId() {
         return id;
     }
 
@@ -50,16 +50,16 @@ public class BasePlan {
     }
 
     public static final class Builder {
-        private BasePlanId id;
+        private BasePlanProviderId id;
         private String title;
         private String sellMode;
         private Long organizerCompanyId;
-        private List<Plan> planList;
+        private List<PlanProvider> planProviderList;
 
         private Builder() {
         }
 
-        public Builder id(BasePlanId val) {
+        public Builder id(BasePlanProviderId val) {
             id = val;
             return this;
         }
@@ -79,13 +79,13 @@ public class BasePlan {
             return this;
         }
 
-        public Builder planList(List<Plan> val) {
-            planList = val;
+        public Builder planList(List<PlanProvider> val) {
+            planProviderList = val;
             return this;
         }
 
-        public BasePlan build() {
-            return new BasePlan(this);
+        public BasePlanProvider build() {
+            return new BasePlanProvider(this);
         }
     }
 }
