@@ -21,6 +21,8 @@ public class ProcessPlanEventCommandHandler {
     public void processAndPublishPlan(ProcessPlanEventCommand processPlanEventCommand) {
         BasePlanProvider basePlanProvider = planProviderMapper.processBasePlanEventCommandToPlan(processPlanEventCommand);
         CreateBasePlanEvent event = basePlanProvider.validateAndCreateEvent();
-        basePlanEventPublisher.publish(event);
+        if (event != null) {
+            basePlanEventPublisher.publish(event);
+        }
     }
 }

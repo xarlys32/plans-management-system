@@ -1,11 +1,11 @@
 package com.fever.plans_management_system.plans_management.domain.entity;
 
-import com.fever.plans_management_system.plans_provider.domain.valueobject.BasePlanProviderId;
+import com.fever.plans_management_system.plans_management.domain.valueobject.BasePlanId;
 
 import java.util.List;
 
 public class BasePlan {
-    private BasePlanProviderId id;
+    private BasePlanId id;
     private String title;
     private String sellMode;
     private Long organizerCompanyId;
@@ -27,7 +27,7 @@ public class BasePlan {
         return new Builder();
     }
 
-    public BasePlanProviderId getId() {
+    public BasePlanId getId() {
         return id;
     }
 
@@ -44,7 +44,7 @@ public class BasePlan {
     }
 
     public static final class Builder {
-        private BasePlanProviderId id;
+        private BasePlanId id;
         private String title;
         private String sellMode;
         private Long organizerCompanyId;
@@ -53,7 +53,7 @@ public class BasePlan {
         private Builder() {
         }
 
-        public Builder id(BasePlanProviderId val) {
+        public Builder id(BasePlanId val) {
             id = val;
             return this;
         }

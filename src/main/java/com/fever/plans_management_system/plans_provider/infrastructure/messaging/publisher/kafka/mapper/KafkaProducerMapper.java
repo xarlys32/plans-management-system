@@ -12,13 +12,13 @@ public class KafkaProducerMapper {
         return new BasePlanAvro(createBasePlanEvent.getBasePlanProvider().getId().value(),
                 createBasePlanEvent.getBasePlanProvider().getTitle(),
                 createBasePlanEvent.getBasePlanProvider().getSellMode(),
-                createBasePlanEvent.getBasePlanProvider().getPlanList().stream().map(plan -> {return new PlanAvro(
+                createBasePlanEvent.getBasePlanProvider().getOrganizerCompanyId(),
+                createBasePlanEvent.getBasePlanProvider().getPlanList().stream().map(plan -> new PlanAvro(
                         plan.getId().value(), plan.getStartDate().toString(),
                         plan.getEndDate().toString(), plan.getSellFrom().toString(), plan.getSellTo().toString(),
-                        plan.isSoldOut(), plan.getZones().stream().map(zone -> {return new ZoneAvro(
+                        plan.isSoldOut(), plan.getZones().stream().map(zone -> new ZoneAvro(
                                 zone.getId().value(),
-                        zone.getCapacity(), String.valueOf(zone.getPrice()), zone.getName(), zone.isNumbered());
-                }).toList());}).toList());
+                        zone.getCapacity(), String.valueOf(zone.getPrice()), zone.getName(), zone.isNumbered())).toList())).toList());
     }
 
 }

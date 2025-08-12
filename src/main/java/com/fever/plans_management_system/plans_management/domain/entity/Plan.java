@@ -1,12 +1,12 @@
 package com.fever.plans_management_system.plans_management.domain.entity;
 
-import com.fever.plans_management_system.plans_provider.domain.valueobject.PlanProviderId;
+import com.fever.plans_management_system.plans_management.domain.valueobject.PlanId;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class Plan {
-    private PlanProviderId id;
+    private PlanId id;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
     private LocalDateTime sellFrom;
@@ -29,7 +29,7 @@ public class Plan {
     }
 
     public static final class Builder {
-        private PlanProviderId id;
+        private PlanId id;
         private LocalDateTime startDate;
         private LocalDateTime endDate;
         private LocalDateTime sellFrom;
@@ -44,7 +44,7 @@ public class Plan {
             return new Builder();
         }
 
-        public Builder id(PlanProviderId val) {
+        public Builder id(PlanId val) {
             id = val;
             return this;
         }
@@ -84,7 +84,7 @@ public class Plan {
         }
     }
 
-    public PlanProviderId getId() {
+    public PlanId getId() {
         return id;
     }
 

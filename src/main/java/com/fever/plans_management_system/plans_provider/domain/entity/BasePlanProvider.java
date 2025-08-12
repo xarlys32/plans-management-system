@@ -6,6 +6,7 @@ import com.fever.plans_management_system.plans_provider.domain.valueobject.BaseP
 import java.util.List;
 
 public class BasePlanProvider {
+    private static String VALID_SELL_MODE = "online";
     private BasePlanProviderId id;
     private String title;
     private String sellMode;
@@ -25,6 +26,9 @@ public class BasePlanProvider {
     }
 
     public CreateBasePlanEvent validateAndCreateEvent() {
+        if (!sellMode.equals(VALID_SELL_MODE)) {
+            return null;
+        }
         return new CreateBasePlanEvent("CREATE_BASE_PLAN", this);
     }
 

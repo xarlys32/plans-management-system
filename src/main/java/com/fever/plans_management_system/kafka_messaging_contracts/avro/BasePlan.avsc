@@ -6,6 +6,7 @@
     { "name": "base_plan_id", "type": "long" },
     { "name": "sell_mode", "type": "string" },
     { "name": "title", "type": "string" },
+    { "name": "organizer_company_id", "type": ["null", "long"] },
     {
       "name": "plans",
       "type": {

@@ -1,4 +1,4 @@
-package com.fever.plans_management_system.plans_provider.application.record;
+package com.fever.plans_management_system.plans_management.application.record;
 
 import java.util.List;
 
