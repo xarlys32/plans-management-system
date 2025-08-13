@@ -1,20 +1,20 @@
 package com.fever.plans_management_system.plans_management.infrastructure.repository.postgres.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Objects;
 
 @Entity
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Builder
 @Table(name = "zones")
-public class ZoneEntity {
+public class ZoneEntity  implements Serializable {
 
     @Id
     @Column(name = "zone_id")
@@ -35,4 +35,18 @@ public class ZoneEntity {
 
     @Column(name = "numbered")
     private Boolean numbered;
+
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        ZoneEntity that = (ZoneEntity) o;
+        return Objects.equals(zoneId, that.zoneId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(zoneId);
+    }
 }

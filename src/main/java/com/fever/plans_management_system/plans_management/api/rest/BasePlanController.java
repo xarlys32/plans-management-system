@@ -5,6 +5,7 @@ import com.fever.plans_management_system.plans_management.api.rest.mapper.Manage
 import com.fever.plans_management_system.plans_management.application.handler.GetEventsFromDatesQueryHandler;
 import com.fever.plans_management_system.plans_management.application.query.GetEventsFromDatesQuery;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,8 +31,9 @@ public class BasePlanController {
 
     @GetMapping("/")
     @Operation(summary = "Get events from dates")
-    public ResponseEntity<GetEventsFromDatesResponseDTO> getEvents(
+    public ResponseEntity<GetEventsFromDatesResponseDTO> getEvents(@Parameter(description = "Date from", example = "yyyy-MM-dd")
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
+            @Parameter(description = "Date to", example = "yyyy-MM-dd")
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to) {
 
         LocalDateTime fromDateTime = from.atStartOfDay();

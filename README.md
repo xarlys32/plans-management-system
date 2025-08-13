@@ -1,23 +1,22 @@
 # plans-management-system
 
-This app is unfinished for not have enough management time. I create the main structure and mapper but I miss the validation in domain and more config(no time). 
-For that I could not make a Make file for run the app.
-What is already implemented is
+It's app based on management, store and messaging of events through an external provider
+
+This app is based in:
 - Avro and Kafka libraries in an extra package
 - Kafka Consumer and provider config on each infrastructure
 - Ports and adapters configuration
 - Scheduler for get the xml events
 - Repository for Postgresql
+- Redis for Cache queries and Events
 
-The management domain is on the stage of receive the event and save it on database and create the queries and rest
+We have 2 bounded context were one is responsable of obtained and messaging the events from and external provider, and the other ones is 
+who takes that processed events and store him through a database. We use Redis in both context for cache queries and processed events.
+<br/>
+In this task I don't make so much extravalidation that I could make in the domain and value objects and also the testing is not done, but is something that is very important(I spend the time in troubles with configuration)
 <br/>
 
-My idea is 2 main domains focused one in consume the xml event through a scheduler, process it and create a Kafka topic 
-for the second domain that is going to be responsable o management in a Postgres Database the topic and also
-being able to make queries through rest controller for consulting events.
+I made a make file for running and also you can run the running the docker-compose and then the app.
 <br/>
-The architecture is Hexagonal with DDD and CQRS, also my idea was to validate the domain through entities and valueObjects.
+Open api is facilitated to check the queries from events http://localhost:8080/swagger-ui/index.html (I missed the validation for dates, so for timing I considered the happy path when the user enter the dates)
 
-<br/>Apart of Kafka and Postgresql I would like to implement a redis for cache events from provider xml events and for queries of postgresql
-
-<br/> Also implement Unit test with JUNIT and Mocks

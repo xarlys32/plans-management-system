@@ -1,21 +1,22 @@
 package com.fever.plans_management_system.plans_management.infrastructure.repository.postgres.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
-@Data
+
+@Getter
+@Setter
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Table(name = "plans")
-public class PlanEntity {
+public class PlanEntity  implements Serializable {
 
     @Id
     @Column(name = "plan_id")
@@ -40,7 +41,18 @@ public class PlanEntity {
     @Column(name = "sold_out")
     private Boolean soldOut;
 
-    @OneToMany(mappedBy = "plan", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "plan", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<ZoneEntity> zones;
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        PlanEntity that = (PlanEntity) o;
+        return Objects.equals(planId, that.planId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(planId);
+    }
 }

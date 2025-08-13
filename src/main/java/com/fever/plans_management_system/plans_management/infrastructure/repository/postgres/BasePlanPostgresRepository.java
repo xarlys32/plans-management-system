@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @Repository
-public interface ManagementPostgresRepository extends JpaRepository<BasePlanEntity, Long> {
+public interface BasePlanPostgresRepository extends JpaRepository<BasePlanEntity, Long> {
     @Query("""
            SELECT DISTINCT bp
            FROM BasePlanEntity bp
@@ -21,4 +21,6 @@ public interface ManagementPostgresRepository extends JpaRepository<BasePlanEnti
            """)
     List<BasePlanEntity> findBasePlanByPlanDateRange(@Param("from") LocalDateTime from,
                                              @Param("to") LocalDateTime to);
+
+
 }
