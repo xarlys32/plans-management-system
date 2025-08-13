@@ -57,5 +57,15 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - ./infrastructure/migrations/postgres:/docker-entrypoint-initdb.d:ro
 
+  redis:
+    image: redis:7.2
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: [ "redis-server", "--appendonly", "yes" ]
+
 volumes:
   postgres_data:
+  redis_data:

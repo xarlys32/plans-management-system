@@ -1,9 +1,11 @@
 package com.fever.plans_management_system.plans_management.infrastructure.repository.postgres.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.math.BigDecimal;
 
+@Data
 @Entity
 @Table(name = "zones")
 public class ZoneEntity {
